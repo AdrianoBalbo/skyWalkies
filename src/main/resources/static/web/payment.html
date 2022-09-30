@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Payment | SKYWALKIES</title>
+    <!-- la etiqueta "meta" de abajo nos ayuda a que ande el responsive xd -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/styles/backgroundStars.css">
+    <link rel="stylesheet" href="../assets/styles/payment.css">
+    <!-- <link rel="stylesheet" href="../assets/styles/styles.css"> -->
+</head>
+
+<body >
+    <div id="app">
+    <header class="sticky-top bg-white">
+        <nav class="d-flex justify-content-between align-items-center">
+            <!-- OFF CANVAS LEFT PARA EL NAV -->
+
+            <div>
+                <a href="./cart.html" class="text-black mx-2 ms-3">
+
+                    <!-- <i class="bi bi-bag-fill" style="font-size: 2.2rem;"></i> -->
+
+                    <i class="bi bi-bag-heart-fill" style="font-size: 2.2rem;">
+                        <span class="position-absolute translate-middle badge rounded-pill"
+                            style="font-size: 0.5rem; top: 15px; color: white; background-color: red;">
+                                <!-- {{checkBadgeNumber}} -->
+                        </span>
+                    </i>
+
+                    <!-- <i class="bi bi-cart4" style="font-size: 2.2rem;"></i> -->
+                </a>
+            </div>
+
+
+            <a class="d-none d-md-flex" href="./index.html">
+                <img src="../assets/img/skyWalkiesIsoLogo.png" height="80" alt="Skywalkies logo">
+            </a>
+            <a class="d-md-none d-flex" href="#">
+                <img src="../assets/img/skyWalkiesIsoLogoTxt.png" height="80" alt="Skywalkies logo">
+            </a>
+
+
+            <!-- OFF CANVAS RIGHT REGISTRO -->
+
+            <button class="btn btn-solid d-flex align-items-center me-md-3" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @click="renderAvatar">
+                <p class="mt-2 me-2 fw-bold d-none d-md-flex">User Panel</p>
+                <i class="bi bi-person-circle fs-2"></i>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" data-bs-scroll="true" id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header border-bottom">
+                    <h5 class="offcanvas-title" id="offcanvasRightLabel">User Panel</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+
+
+
+                    <div class="d-flex justify-content-center flex-wrap align-items-between">
+
+                        <!-- ESTE DIV NO SE VE -->
+                        <div class="d-none">
+                            <!-- LOAD HEADS -->
+                            <img src="../assets/img/avatarCollection/head1.png" alt="">
+                            <img src="../assets/img/avatarCollection/head2.png" alt="">
+                            <img src="../assets/img/avatarCollection/head3.png" alt="">
+                            <img src="../assets/img/avatarCollection/head4.png" alt="">
+                            <img src="../assets/img/avatarCollection/head5.png" alt="">
+                            <img src="../assets/img/avatarCollection/head6.png" alt="">
+                            <img src="../assets/img/avatarCollection/head7.png" alt="">
+                            <img src="../assets/img/avatarCollection/head8.png" alt="">
+                            <img src="../assets/img/avatarCollection/head9.png" alt="">
+                            <!-- LOAD BODY -->
+                            <img src="../assets/img/avatarCollection/body1.png" alt="">
+                            <img src="../assets/img/avatarCollection/body2.png" alt="">
+                            <img src="../assets/img/avatarCollection/body3.png" alt="">
+                            <img src="../assets/img/avatarCollection/body4.png" alt="">
+                            <img src="../assets/img/avatarCollection/body5.png" alt="">
+                            <!-- LOAD BODY COLORS -->
+                            <img src="../assets/img/avatarCollection/bodyColor1.png" alt="">
+                            <img src="../assets/img/avatarCollection/bodyColor2.png" alt="">
+                            <img src="../assets/img/avatarCollection/bodyColor3.png" alt="">
+                            <img src="../assets/img/avatarCollection/bodyColor4.png" alt="">
+                            <!-- LOAD FACE  -->
+                            <img src="../assets/img/avatarCollection/face1.png" alt="">
+                            <img src="../assets/img/avatarCollection/face2.png" alt="">
+                            <img src="../assets/img/avatarCollection/face3.png" alt="">
+                            <img src="../assets/img/avatarCollection/face4.png" alt="">
+                            <img src="../assets/img/avatarCollection/face5.png" alt="">
+                            <!-- LOAD SHOES  -->
+                            <img src="../assets/img/avatarCollection/shoes1.png" alt="">
+                            <img src="../assets/img/avatarCollection/shoes2.png" alt="">
+                            <img src="../assets/img/avatarCollection/shoes3.png" alt="">
+                            <img src="../assets/img/avatarCollection/shoes4.png" alt="">
+                            <img src="../assets/img/avatarCollection/shoes5.png" alt="">
+                            <!-- LOAD LINE ART  -->
+                            <img src="../assets/img/avatarCollection/lineArtObligatory.png" alt="">
+                        </div>
+
+                        <h2>Glad to have you back {{client.firstName}}!</h2>
+
+                        <div class="d-flex col-12 col-lg-2 m-3 justify-content-center  contenedorCanvas">
+                            <canvas id="myCanvas" width="400" height="680"
+                                style="border: 5px solid black;"></canvas>
+                        </div>
+
+                        <div class="d-flex justify-content-center col-12 my-2">
+                            <a href="../web/character_customization.html" class="col-6">
+                                <button class="btn btn-dark col-12">
+                                    Customize your avatar
+                                </button>
+                            </a>
+                        </div>
+
+
+                        <div class="d-flex justify-content-center col-12 my-2">
+                            <button @click="areYouSure" class="btn btn-dark col-6">
+                                Logout
+                            </button>
+                        </div>
+
+                        <div id="invisibleDiv" class="d-none">
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ACA TERMINA EL OFF CANVAS DE REGISTRO -->
+        </nav>
+
+    </header>
+    <!-- estrellas del fondo -->
+    <div id='stars' class="estrellas"></div>
+    <div id='stars2' class="estrellas"></div>
+    <div id='stars3' class="estrellas"></div>
+    <!-- ---- -->
+
+    <main class="d-flex align-items-center justify-content-center gap-1">
+        <div class="d-flex flex-column align-items-center justify-content-around payForm gap-2 p-2">
+            <h2 class="fw-bold text-center">Finish your payment</h2>
+            <form action="" class="d-flex flex-column align-items-center justify-content-around gap-2 " @submit.prevent="">
+
+                    <label for="cardholder">Cardholder:</label>
+                    <input type="text" class="form-control" id="cardholder" placeholder="" v-model="cardholder">
+
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" class="form-control" id="cardNumber" placeholder="" v-model="cardNumber">
+
+                    <label for="thruDate">Expiration:</label>
+                    <input type="date" class="form-control" id="thruDate" placeholder="" v-model="thruDate">
+
+                    <label for="cvv">CVV:</label>
+                    <input type="number" class="form-control" id="cvv" placeholder="" v-model="cvv">
+
+                    <label for="fromAccount">Account of origin:</label>
+                    <input type="text" class="form-control" id="fromAccount" placeholder="" v-model="fromAccount">
+
+                    <div class="m-1">
+                        <h5 class="fw-bold fs-3">Total: {{moneyFormatter(currentBill.total)}}</h5>
+                    </div>
+                    <input type="submit" class="btn btn-dark" id="submit" placeholder="" value="Purchase" @click="areYouSurePay">
+            </form>
+        </div>
+    </main>
+    <footer class="d-flex align-items-center justify-content-evenly border-top flex-wrap">
+        <div class="d-flex justify-content-evenly col-12 col-md pt-3">
+            <div class="d-flex flex-column">
+                <a href="#" class="fs-5 text-black">ABOUT US</a>
+                <a href="#" class="fs-6 text-black">News</a>
+            </div>
+            <div class="d-flex flex-column">
+                <a href="#" class="fs-6 text-black">Influence</a>
+                <a href="#" class="fs-6 text-black">Employment</a>
+            </div>
+        </div>
+        <div class="d-flex col-12 col-md justify-content-center mt-lg-3">
+            <a href="#" class="fs-1 mx-4 text-black">
+                <i class="bi bi-instagram"></i>
+            </a>
+
+            <a href="#" class="fs-1 mx-4 text-black">
+                <i class="bi bi-facebook"></i>
+            </a>
+
+            <a href="#" class="fs-1 mx-4 text-black">
+                <i class="bi bi-twitter"></i>
+            </a>
+
+        </div>
+        <div class="d-flex flex-column col-12 col-md text-center justify-content-end pt-4">
+            <p>&copy; 2022 SKYWALKIES SRL. All rights reserved</p>
+            <a href="#" class="text-black">Terms and privacy policy</a>
+        </div>
+    </footer>
+
+</div>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+
+    <!-- <script src="../a"></script> -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/payment.js"></script>
+</body>
+
+</html>

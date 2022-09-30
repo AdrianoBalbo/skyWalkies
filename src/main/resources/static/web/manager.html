@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Manager | SKYWALKIES</title>
+    <!-- la etiqueta "meta" de abajo nos ayuda a que ande el responsive xd -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/styles/manager.css">
+    <link rel="stylesheet" href="../assets/styles/slider.css">
+    <link rel="shortcut icon" href="../assets/img/skyWalkiesLogo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div id="app">
+        <header class="sticky-top bg-white">
+            <nav class="d-flex justify-content-between align-items-center">
+                <!-- OFF CANVAS LEFT PARA EL NAV -->
+
+                <a href="./cart.html" class="m-2 col-3">
+                    <!-- <button class=" btn-solid" style="height: 10rem;"  type="button"> -->
+
+                    <!-- <i class="bi bi-bag-fill text-black carritoNav" ></i> -->
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
+                        class="bi bi-bag-heart-fill text-black" viewBox="0 0 16 16">
+                        <path
+                            d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5ZM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1Zm0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z" />
+                    </svg>
+
+                    <!-- <i class="bi bi-bag-heart"></i> -->
+
+                    <!-- <i class="bi bi-bag-heart-fill"></i> -->
+
+                    <!-- <i class="bi bi-cart4"></i> -->
+
+                </a>
+
+
+                <!-- ACA TERMINA EL OFF CANVAS DE  NAV -->
+
+                <a class="d-none d-md-flex" href="./index.html">
+                    <img src="../assets/img/skyWalkiesIsoLogo.png" height="80" alt="Skywalkies logo">
+                </a>
+                <a class="d-md-none d-flex" href="#">
+                    <img src="../assets/img/skyWalkiesIsoLogoTxt.png" height="80" alt="Skywalkies logo">
+                </a>
+
+
+                <!-- OFF CANVAS RIGHT REGISTRO -->
+
+                <button class="btn btn-solid d-flex justify-content-end align-items-center col-3" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+                    @click="renderAvatar">
+                    <p v-if="currentClient == null" class="mt-2 me-2 fw-bold">Log In / Sign Up</p>
+                    <p v-else class="mt-2 me-2 fw-bold">Admin Panel</p>
+                    <i class="bi bi-person-circle fs-2"></i>
+                </button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" data-bs-scroll="true" id="offcanvasRight"
+                    aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header border-bottom">
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Admin Panel</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+
+                                                <!-- ESTE DIV NO SE VE -->
+                                                <div class="d-none">
+                                                    <!-- LOAD HEADS -->
+                                                    <img src="../assets/img/avatarCollection/head1.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/head2.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/head3.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/head4.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/head5.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/head6.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/head7.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/head8.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/head9.png" alt="">
+                                                    <!-- LOAD BODY -->
+                                                    <img src="../assets/img/avatarCollection/body1.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/body2.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/body3.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/body4.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/body5.png" alt="">
+                                                    <!-- LOAD BODY COLORS -->
+                                                    <img src="../assets/img/avatarCollection/bodyColor1.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/bodyColor2.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/bodyColor3.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/bodyColor4.png" alt="">
+                                                    <!-- LOAD FACE  -->
+                                                    <img src="../assets/img/avatarCollection/face1.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/face2.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/face3.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/face4.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/face5.png" alt="">
+                                                    <!-- LOAD SHOES  -->
+                                                    <img src="../assets/img/avatarCollection/shoes1.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/shoes2.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/shoes3.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/shoes4.png" alt="">
+                                                    <img src="../assets/img/avatarCollection/shoes5.png" alt="">
+                                                    <!-- LOAD LINE ART  -->
+                                                    <img src="../assets/img/avatarCollection/lineArtObligatory.png" alt="">
+                                                </div>
+
+
+
+
+                        <div v-if="currentClient == null" class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                        REGISTER
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+
+                                        <!-- FORM DE REGISTRO -->
+
+                                        <form @submit.prevent="">
+                                            <div class="mb-3">
+                                                <label for="newClientFirstName" class="form-label">First Name</label>
+                                                <input type="text" class="formInputs" id="newClientFirstName"
+                                                    v-model="newClientFirstName">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="newClientLastName" class="form-label">Last Name</label>
+                                                <input type="text" class="formInputs" id="newClientLastName"
+                                                    v-model="newClientLastName">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="newClientEmail" class="form-label">Email address</label>
+                                                <input type="email" class="formInputs" id="newClientEmail"
+                                                    aria-describedby="emailHelp" v-model="newClientEmail">
+                                                <div id="newClientEmail" class="form-text">We'll never share your email
+                                                    with
+                                                    anyone else.</div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="newClientPassword" class="form-label">Password</label>
+                                                <input v-model="newClientPassword" type="password" class="formInputs"
+                                                    id="newClientPassword">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="confirmNewClientPassword" class="form-label">Confirm
+                                                    Password</label>
+                                                <input v-model="confirmNewClientPassword" type="password"
+                                                    class="formInputs" id="confirmNewClientPassword">
+                                            </div>
+
+                                            <button type="submit" class="btn btn-dark" @click="signUp">Submit</button>
+                                        </form>
+
+                                        <!-- TERMINA FORM -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                        LOG IN
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+
+                                        <!-- FORM DE LOGIN -->
+
+                                        <form @submit.prevent="">
+                                            <div class="mb-3">
+                                                <label for="clientEmail" class="form-label">Email address</label>
+                                                <input type="email" class="formInputs" id="clientEmail"
+                                                    v-model="clientEmail" aria-describedby="emailHelp">
+                                                <div id="emailHelp" class="form-text">We'll never share your email with
+                                                    anyone else.</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="clientPassword" class="form-label">Password</label>
+                                                <input type="password" class="formInputs" id="clientPassword"
+                                                    v-model="clientPassword">
+                                            </div>
+                                            <button type="submit" @click="login" class="btn btn-dark">Submit</button>
+                                        </form>
+
+                                        <!-- TERMINA FORM -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div v-else class="d-flex justify-content-center flex-wrap align-items-between">
+
+                            <h2>Glad to have you back {{currentClient.firstName}}!</h2>
+
+                            <div class="d-flex col-12 col-lg-2 m-3 justify-content-center  contenedorCanvas">
+                                <canvas id="myCanvas" width="400" height="680"
+                                    style="border: 5px solid black;"></canvas>
+                            </div>
+
+                            <div class="d-flex justify-content-center col-12 my-2">
+                                <a href="../web/character_customization.html" class="col-6">
+                                    <button class="btn btn-dark col-12">
+                                        Customize your avatar
+                                    </button>
+                                </a>
+                            </div>
+
+
+                            <div class="d-flex justify-content-center col-12 my-2">
+                                <button @click="logout" class="btn btn-dark col-6">
+                                    Logout
+                                </button>
+                            </div>
+
+                            <div id="invisibleDiv" class="d-none">
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ACA TERMINA EL OFF CANVAS DE REGISTRO -->
+            </nav>
+
+        </header>
+
+
+        <main class="d-flex pe-5">
+
+            <div class='bloques d-flex justify-content-center align-items-center '>
+                <div class="fondoManager d-flex me-5 p-3">
+                    <div class="col-12 table-responsive scrollBar">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <h2 class="text-center mx-3">Product Manager</h2>
+                            <button class="btn btn-dark mx-3" data-bs-toggle="modal"
+                                data-bs-target="#modalAddProduct">Add Product</button>
+                        </div>
+
+                        <div>
+                            <table class="table m-1 justify-content-center align-items-center">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Product</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Stock</th>
+                                        <th>Edit</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="product in productsArray">
+                                        <td><img :src="'../assets/img/'+product.name+'.png'" style="height: 2rem;"
+                                                alt="">
+                                        </td>
+                                        <td>{{product.name}}</td>
+                                        <td>{{product.price}}</td>
+                                        <td>{{product.stock}}</td>
+                                        <td>
+                                            <button data-bs-toggle="modal" data-bs-target="#exampleModal" @click="changeRender(product.name)" class="btn">
+
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button @click="toggleProductActive(product)" class="btn">
+
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-eye-slash-fill"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z" />
+                                                    <path
+                                                        d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z" />
+                                                </svg>
+                                            </button>
+
+                                            <!-- <input type="checkbox" id="_checkbox">
+                                                <label for="_checkbox" class="labelCheckbox">
+                                                <div id="tick_mark"></div>
+                                            </label> -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+            <!-- Modal Agregar Producto -->
+            <div class="modal fade " id="modalAddProduct" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Product Data</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="d-flex flex-wrap">
+                                <label for="newProductName">Product Name:</label>
+                                <input class="col-10 formInputsModal" type="text" name="newProductName"
+                                    id="newProductName" v-model="newProductName">
+                                <label for="newProductColor" class="mt-2">Product Color:</label>
+                                <input class="col-10 formInputsModal" type="text" name="newProductColor"
+                                    id="newProductColor" v-model="newProductColor">
+                                <label for="newProductPrice" class="col-4 mt-2">Product Price:</label>
+                                <input class="col-10 formInputsModal" type="number" name="newProductPrice"
+                                    id="newProductPrice" v-model="newProductPrice">
+
+
+                                <p class="col-12 mt-2 text-center">Sizes Available:</p>
+                                <div class="d-flex justify-content-center col-12">
+                                    <label class="mx-2" for="size8">8</label>
+                                    <input @change="addNewSizes(8)" type="checkbox" name="newProductSizes" id="size8">
+                                    <label class="mx-2" for="size9">9</label>
+                                    <input @change="addNewSizes(9)" type="checkbox" name="newProductSizes" id="size9">
+                                    <label class="mx-2" for="size10">10</label>
+                                    <input @change="addNewSizes(10)" type="checkbox" name="newProductSizes" id="size10">
+                                    <label class="mx-2" for="size11">11</label>
+                                    <input @change="addNewSizes(11)" type="checkbox" name="newProductSizes" id="size11">
+                                    <label class="mx-2" for="size12">12</label>
+                                    <input @change="addNewSizes(12)" type="checkbox" name="newProductSizes" id="size12">
+                                </div>
+
+
+
+                                <label for="newStock" class="col-12 mt-2">Stock:</label>
+                                <input class="col-6 formInputsModal" type="number" name="newStock" id="newStock"
+                                    v-model="newStock">
+                                <label for="newStatus" class="col-7 mt-2">Status (unchecked for disabled):</label>
+                                <input class="mt-2" type="checkbox" name="newStatus" @change="changeNewStatus"
+                                    id="newStatus">
+                            </form>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-around">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-dark" @click="addNewProduct">Add Product</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- MODAL EDIT PRODUCT -->
+            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editing {{nameFormater(renderForModal)}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="d-flex flex-wrap">
+
+                                <label for="newProductPrice" class="col-6 mt-2">Product Price(Actually {{productToDisplay.price}}):</label>
+                                <input class="col-10 formInputsModal" type="number" name="newProductPrice"
+                                    id="newProductPrice" v-model="editedPrice">
+
+
+                                <!-- <p class="col-12 mt-2 text-center">Sizes Available:</p>
+                                <div class="d-flex justify-content-center col-12">
+                                    <label class="mx-2" for="size8">8</label>
+                                    <input @change="addNewSizes(8)" type="checkbox" name="newProductSizes" id="size8">
+                                    <label class="mx-2" for="size9">9</label>
+                                    <input @change="addNewSizes(9)" type="checkbox" name="newProductSizes" id="size9">
+                                    <label class="mx-2" for="size10">10</label>
+                                    <input @change="addNewSizes(10)" type="checkbox" name="newProductSizes" id="size10">
+                                    <label class="mx-2" for="size11">11</label>
+                                    <input @change="addNewSizes(11)" type="checkbox" name="newProductSizes" id="size11">
+                                    <label class="mx-2" for="size12">12</label>
+                                    <input @change="addNewSizes(12)" type="checkbox" name="newProductSizes" id="size12">
+                                </div> -->
+
+
+
+                                <label for="newStock" class="col-12 mt-2">Stock(Actually {{productToDisplay.stock}}):</label>
+                                <input class="col-6 formInputsModal" type="number" name="newStock" id="newStock"
+                                    v-model="editedStock">
+
+                            </form>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-around">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-dark" @click="editProduct">Edit Product</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+
+
+
+
+        </main>
+
+
+    </div>
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+    <script src="../assets/js/manager.js"></script>
+
+    <script src="../assets/js/sliderVanilla.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</body>
+
+</html>

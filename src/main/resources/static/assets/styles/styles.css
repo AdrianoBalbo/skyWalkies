@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Tajawal';
+}
+
+header {
+  height: 7vh;
+}
+
+main {
+  min-height: 80vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7) .1em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, .7) .1em, transparent .1em);
+  background-size: 3em 3em;
+}
+
+nav {
+  height: 100%;
+}
+
+footer {
+  height: 13vh;
+}
+
+li {
+  list-style: none;
+}
+
+/* para la imagen de prueba de logo */
+
+nav>img {
+  height: 75%;
+}
+
+/* -- */
+
+
+.widthZapaCarrusel {
+  width: 6rem !important;
+}
+
+.list-group-item {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.displayedShoe{
+  transition: 300ms;
+}
+
+.displayedShoe:hover{
+  transform: translateY(-1.2rem);
+}
+
+
+/* PRUEBA "CARRUSEL" DE ZAPAS */
+
+.horizontal-scroll-wrapper {
+  width: 100px;
+  height: 300px;
+  /* max-height: 320px; */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.horizontal-scroll-wrapper>div {
+  width: 100px;
+  height: 100px;
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+#scrollContainer {
+  /* max-height: 300px !important; */
+  transform: rotate(-90deg);
+}
+
+.horizontal-scroll-wrapper-modal {
+  width: 100px;
+  height: 300px;
+  /* max-height: 320px; */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.horizontal-scroll-wrapper-modal>div {
+  width: 100px;
+  height: 100px;
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+#scrollContainerModal {
+  transform: rotate(-90deg);
+  height: 100px;
+}
+/* estilos para las scroll bars */
+.scrollBar::-webkit-scrollbar {
+  width: 10px;
+}
+.scrollBar::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+.scrollBar::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 100px;
+}
+/* ------ */
+.modalSpawner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.noBGnoBorder{
+  border: none;
+  background-color: rgba(197, 19, 19, 0);
+}
+
+video {
+  width: 80%;
+  align-self: center;
+  justify-self: center;
+  z-index: 2;
+}
+
+.card {
+  border-radius: 0;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.sombra{
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+}
+
+
+/* Acá estan los carrouseles de zapas mobile */
+
+.shoesCarrousel{
+  width: 80vw;
+  height: 5rem;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  white-space: nowrap;
+  border-bottom: 15px ridge #FFFFFF;
+  border-radius: 0px 0px 11px 11px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+}
+.shoesCarrousel>a{
+  width: 100px;
+height: 50px;
+margin: 0 10px 0 0;
+padding: 0;
+display: inline-block;
+}
+.shoesCarrouselMobile{
+  width: 80vw;
+  height: 5rem;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-bottom: 15px ridge #FFFFFF;
+  border-radius: 0px 0px 11px 11px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+}
+.shoesCarrouselMobile>a{
+  width: 100px;
+height: 50px;
+margin: 0 10px 0 0;
+padding: 0;
+display: inline-block;
+}
+/* ---- */
+
+
+.accordion-button:not(.collapsed){
+  background-color: #FFFFFF;
+  color: black;
+  border: gray;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: var(--bs-accordion-btn-icon);
+  transform: var(--bs-accordion-btn-icon-transform);
+  border: gray;
+}
+
+.formInputs{
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+  padding: 0.375rem 0.75rem;
+}
+
+.sizes{
+  width: 2rem;
+  height: 1.5rem;
+background-color: rgb(184, 183, 183);
+  text-align: center;
+  cursor: pointer;
+}
+.sizesDark{
+  width: 2rem;
+  height: 1.5rem;
+background-color: rgb(184, 183, 183);
+  text-align: center;
+  color: #FFFFFF;
+cursor: pointer;
+}
+/* AVATAR */
+
+.contenedorCanvas {
+  height: 21rem;
+  width: fit-content;
+  background-color: white;
+}
+
+
+
+
+
+
+/* EMPIEZAN LAS MEDIA QUERIES */
+
+@media (min-width: 426px) {
+  .horizontal-scroll-wrapper-modal {
+    width: 100px;
+    height: 700px;
+    /* max-height: 320px; */
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 1024px) {
+  .horizontal-scroll-wrapper-modal {
+    width: 100px;
+    height: 1000px;
+    /* max-height: 320px; */
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* .ocultar{
+    display: none !important;
+  } */
+
+  footer {
+    height: 5vh;
+  }
+
+  header {
+    height: 10vh;
+  }
+
+  main {
+    background: none !important;
+  }
+
+  .iconosLg {
+    height: 100%;
+    width: 4rem !important;
+  }
+}
+
+@media (min-width: 1400px) {
+  .horizontal-scroll-wrapper-modal {
+    width: 100px;
+    height: 1400px;
+    /* max-height: 320px; */
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+/* QUERIES PARA SLIDER */
+@media (min-width: 1000px) {
+  .slider {
+    display: none;
+  }
+}
+
+@media (min-width:1400px) {
+  .widthZapaCarrusel {
+    width: 7rem !important;
+  }
+  
+}
+
+@media(min-width:1200px){
+  .shoesCarrousel{
+    width: 80vw;
+    height: 8rem;
+    /* overflow-x: hidden; */
+  }
+}
+
+/* .estanteZapatillasMobile {
+  width: 30%;
+  height: 15rem !important;
+  border-left: 16px solid rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.2) -7px 0px 60px 40px;
+} */

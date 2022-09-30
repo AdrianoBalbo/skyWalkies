@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home | SKYWALKIES</title>
+    <!-- la etiqueta "meta" de abajo nos ayuda a que ande el responsive xd -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <link rel="stylesheet" href="../assets/styles/slider.css">
+    <link rel="shortcut icon" href="../assets/img/skyWalkiesLogo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div id="app">
+        <header class="sticky-top bg-white">
+            <nav class="d-flex justify-content-between align-items-center">
+                <!-- OFF CANVAS LEFT PARA EL NAV -->
+
+                <div>
+                    <a href="./cart.html" :class="currentClient==null?'d-none' : ' '" class="text-black mx-2 ms-3">
+
+                        <!-- <i class="bi bi-bag-fill" style="font-size: 2.2rem;"></i> -->
+
+                        <i class="bi bi-bag-heart-fill" style="font-size: 2.2rem;">
+                            <span class="position-absolute translate-middle badge rounded-pill"
+                                style="font-size: 0.5rem; top: 15px; color: white; background-color: red;">
+                                <!-- {{checkBadgeNumber}} -->
+                            </span>
+                        </i>
+
+                        <!-- <i class="bi bi-cart4" style="font-size: 2.2rem;"></i> -->
+                    </a>
+                </div>
+
+
+                <a class="d-none d-md-flex" href="#">
+                    <img src="../assets/img/skyWalkiesIsoLogo.png" height="80" alt="Skywalkies logo">
+                </a>
+                <a class="d-md-none d-flex" href="#">
+                    <img src="../assets/img/skyWalkiesIsoLogoTxt.png" height="80" alt="Skywalkies logo">
+                </a>
+
+
+                <!-- OFF CANVAS RIGHT REGISTRO -->
+
+                <button class="btn btn-solid d-flex align-items-center me-md-3" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @click="renderAvatar">
+                    <p v-if="currentClient == null" class="mt-2 me-2 fw-bold d-none d-md-flex">Log In / Sign Up</p>
+                    <p v-else class="mt-2 me-2 fw-bold d-none d-md-flex">User Panel</p>
+                    <i class="bi bi-person-circle fs-2"></i>
+                </button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" data-bs-scroll="true" id="offcanvasRight"
+                    aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header border-bottom">
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel">User Panel</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+
+
+
+
+                        <div v-if="currentClient == null" class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                        REGISTER
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+
+                                        <!-- FORM DE REGISTRO -->
+
+                                        <form @submit.prevent="">
+                                            <div class="mb-3">
+                                                <label for="newClientFirstName" class="form-label">First Name</label>
+                                                <input type="text" class="formInputs" id="newClientFirstName"
+                                                    v-model="newClientFirstName">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="newClientLastName" class="form-label">Last Name</label>
+                                                <input type="text" class="formInputs" id="newClientLastName"
+                                                    v-model="newClientLastName">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="newClientEmail" class="form-label">Email address</label>
+                                                <input type="email" class="formInputs" id="newClientEmail"
+                                                    aria-describedby="emailHelp" v-model="newClientEmail">
+                                                <div id="newClientEmail" class="form-text">We'll never share your email
+                                                    with
+                                                    anyone else.</div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="newClientPassword" class="form-label">Password</label>
+                                                <input v-model="newClientPassword" type="password" class="formInputs"
+                                                    id="newClientPassword">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="confirmNewClientPassword" class="form-label">Confirm
+                                                    Password</label>
+                                                <input v-model="confirmNewClientPassword" type="password"
+                                                    class="formInputs" id="confirmNewClientPassword">
+                                            </div>
+
+                                            <button type="submit" class="btn btn-dark" @click="signUp">Submit</button>
+                                        </form>
+
+                                        <!-- TERMINA FORM -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                        LOG IN
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+
+                                        <!-- FORM DE LOGIN -->
+
+                                        <form @submit.prevent="">
+                                            <div class="mb-3">
+                                                <label for="clientEmail" class="form-label">Email address</label>
+                                                <input type="email" class="formInputs" id="clientEmail"
+                                                    v-model="clientEmail" aria-describedby="emailHelp">
+                                                <div id="emailHelp" class="form-text">We'll never share your email with
+                                                    anyone else.</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="clientPassword" class="form-label">Password</label>
+                                                <input type="password" class="formInputs" id="clientPassword"
+                                                    v-model="clientPassword">
+                                            </div>
+                                            <button type="submit" @click="login" class="btn btn-dark">Submit</button>
+                                        </form>
+
+                                        <!-- TERMINA FORM -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div v-else class="d-flex justify-content-center flex-wrap align-items-between">
+
+                            <!-- ESTE DIV NO SE VE -->
+                            <div class="d-none">
+                                <!-- LOAD HEADS -->
+                                <img src="../assets/img/avatarCollection/head1.png" alt="">
+                                <img src="../assets/img/avatarCollection/head2.png" alt="">
+                                <img src="../assets/img/avatarCollection/head3.png" alt="">
+                                <img src="../assets/img/avatarCollection/head4.png" alt="">
+                                <img src="../assets/img/avatarCollection/head5.png" alt="">
+                                <img src="../assets/img/avatarCollection/head6.png" alt="">
+                                <img src="../assets/img/avatarCollection/head7.png" alt="">
+                                <img src="../assets/img/avatarCollection/head8.png" alt="">
+                                <img src="../assets/img/avatarCollection/head9.png" alt="">
+                                <!-- LOAD BODY -->
+                                <img src="../assets/img/avatarCollection/body1.png" alt="">
+                                <img src="../assets/img/avatarCollection/body2.png" alt="">
+                                <img src="../assets/img/avatarCollection/body3.png" alt="">
+                                <img src="../assets/img/avatarCollection/body4.png" alt="">
+                                <img src="../assets/img/avatarCollection/body5.png" alt="">
+                                <!-- LOAD BODY COLORS -->
+                                <img src="../assets/img/avatarCollection/bodyColor1.png" alt="">
+                                <img src="../assets/img/avatarCollection/bodyColor2.png" alt="">
+                                <img src="../assets/img/avatarCollection/bodyColor3.png" alt="">
+                                <img src="../assets/img/avatarCollection/bodyColor4.png" alt="">
+                                <!-- LOAD FACE  -->
+                                <img src="../assets/img/avatarCollection/face1.png" alt="">
+                                <img src="../assets/img/avatarCollection/face2.png" alt="">
+                                <img src="../assets/img/avatarCollection/face3.png" alt="">
+                                <img src="../assets/img/avatarCollection/face4.png" alt="">
+                                <img src="../assets/img/avatarCollection/face5.png" alt="">
+                                <!-- LOAD SHOES  -->
+                                <img src="../assets/img/avatarCollection/shoes1.png" alt="">
+                                <img src="../assets/img/avatarCollection/shoes2.png" alt="">
+                                <img src="../assets/img/avatarCollection/shoes3.png" alt="">
+                                <img src="../assets/img/avatarCollection/shoes4.png" alt="">
+                                <img src="../assets/img/avatarCollection/shoes5.png" alt="">
+                                <!-- LOAD LINE ART  -->
+                                <img src="../assets/img/avatarCollection/lineArtObligatory.png" alt="">
+                            </div>
+
+                            <h2>Glad to have you back {{currentClient.firstName}}!</h2>
+
+                            <div class="d-flex col-12 col-lg-2 m-3 justify-content-center  contenedorCanvas">
+                                <canvas id="myCanvas" width="400" height="680"
+                                    style="border: 5px solid black;"></canvas>
+                            </div>
+
+                            <div class="d-flex justify-content-center col-12 my-2">
+                                <a href="../web/character_customization.html" class="col-6">
+                                    <button class="btn btn-dark col-12">
+                                        Customize your Skywalker
+                                    </button>
+                                </a>
+                            </div>
+
+
+                            <div class="d-flex justify-content-center col-12 my-2">
+                                <button @click="areYouSure" class="btn btn-dark col-6">
+                                    Logout
+                                </button>
+                            </div>
+
+                            <div id="invisibleDiv" class="d-none">
+                            </div>
+
+
+
+
+
+
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ACA TERMINA EL OFF CANVAS DE REGISTRO -->
+            </nav>
+
+        </header>
+
+
+        <main class="d-flex flex-wrap justify-content-center">
+            <!-- MOBILE DISPLAY  -->
+            <div class="d-lg-none">
+                <!-- PRESENTACION DEL PRODUCTO -->
+                <div class="ocultar mt-1">
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <h2 class="card text-center fw-bolder bgTitlesMobile sombra col-12">Nike newest collection...</h2>
+                        <div class="d-flex justify-content-center ms-5 my-4">
+                            <video src="../assets/vid/zapatillaRotando.webm" autoplay loop muted></video>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-wrap justify-content-center card mx-3">
+                        <h2 class="text-center">"Air Force 1", by "Sky Walkies"</h2>
+                        <p class="m-3">Originally designed by Nike in 1982, the Sky Walkies "Airforce 1" marks the first
+                            time the shoe has been made outside of a Nike factory. An emblem of the street style
+                            community that sapwned it, Men's Artistic Director Renzo Balbo considered the Nike Air Force
+                            1 a cultural symbol in its own right. Now two icons join forces to create the mos authentic
+                            high-end sports shoe. Fasion transcends to become an art object symbol of the subculture
+                            with a bit of magic and innovation.</p>
+                    </div>
+                </div>
+
+                <!-- SECCION HANDCRAFTED  -->
+                <div class="ocultar my-5">
+                    <h2 class="card text-center fw-bolder bgTitlesMobile sombra col-12">Handcrafted</h2>
+                    <div class="d-flex flex-wrap justify-content-center card mx-3">
+                        <p class="m-3">Travel to Fiesso d'Artico and enter the Maison's atelier to discover the
+                            unrivaled craftsmanship the most authentic high-end sports shoe ever.</p>
+                        <h3 class="text-center">"A PATTERN TAKES SHAPE"</h3>
+                        <p class="m-3">A true craftsmanship is based on a skillful hand and precision. Patterns in
+                            luxury
+                            materials are cut, arranged and prepared for construction.</p>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <!-- CAMBIAR VIDEO -->
+                        <video autoplay muted loop width="300px">
+                            <source src="../assets/vid/handcrafted/handcrafted_1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+
+                <!-- SECCION GALERIA DE ZAPAS      -->
+                <div class="d-flex flex-wrap justify-content-center ocultar">
+                    <div class="d-flex justify-content-around align-items-center flex-wrap">
+                        <h2 class="card text-center fw-bolder bgTitlesMobile sombra col-12">Designs Gallery</h2>
+
+
+                        <div class="d-flex flex-wrap justify-content-around filtersMobile p-2 col-12 mb-5 mt-2">
+                            <div class="col-12 d-flex flex-wrap justify-content-center">
+
+                                <div v-for="color in shoeColors" class="d-flex mx-2">
+                                    <input type="checkbox" @change="changeSelectedColors(color)" :id="color"
+                                        :value="color">
+                                    <label :for="color">{{color}}</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <!-- CARRUSEL DE BOOTSTRAP-->
+                        <div class="d-flex flex-wrap ocultar justify-content-center gap-3">
+                            <div class="shoesCarrouselMobile squares col-10">
+
+                                <button class="noBGnoBorder mx-2" v-for="product in upperShelf"
+                                    @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">
+                                    <span class="modalSpawner"></span>
+                                    <img :src="'../assets/img/'+product.name+'.png'"
+                                        class="card-img-top widthZapaCarrusel" alt="...">
+                                </button>
+
+                            </div>
+
+                            <div v-if="selectedColor.length == 0" class="shoesCarrouselMobile squares col-10 ">
+                                <button class="noBGnoBorder mx-2" v-for="product in middleShelf"
+                                    @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">
+                                    <span class="modalSpawner"></span>
+                                    <img :src="'../assets/img/'+product.name+'.png'"
+                                        class="card-img-top widthZapaCarrusel" alt="...">
+                                </button>
+                            </div>
+
+                            <div v-if="selectedColor.length == 0" class="shoesCarrouselMobile squares col-10 ">
+                                <button class="noBGnoBorder mx-2" v-for="product in bottomShelf"
+                                    @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">
+                                    <span class="modalSpawner"></span>
+                                    <img :src="'../assets/img/'+product.name+'.png'"
+                                        class="card-img-top widthZapaCarrusel" alt="...">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="m-3 card p-3">For Spring-Summer 2022/23, Renzo Balbo staged a collaboration between Sky
+                        Walkies and Nike, creating 47 bespoke "Air Force 1" editions. Each of them was expertly crafted,
+                        fusing the classic codes of the sneaker with the House's own insignials and materials, such as
+                        leather, cocodrile, synthetic leather and PVC among others.</p>
+                </div>
+
+                <!-- SECCION INSPIRACION -->
+                <div class="ocultar my-3">
+
+                    <h2 class="card text-center fw-bolder bgTitlesMobile sombra col-12">Inspiration</h2>
+                    <div class="d-flex flex-wrap justify-content-center card mx-3">
+                        <p class="m-3">Trip around the word. Explore Renzo Balbo's creative investigation through spaces
+                            and motifs inherent in his work.</p>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <!-- CAMBIAR VIDEO -->
+                        <video autoplay muted loop width="300px">
+                            <source src="../assets/vid/zapatillaArmandose.webm" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+
+                <!-- SECCION EXPOSITION  -->
+                <div class="ocultar d-flex flex-column align-items-center my-2">
+                        <h2 class="card text-center fw-bolder bgTitlesMobile sombra col-12">Exposition</h2>
+                        <div class="d-flex justify-content-center">
+                            <p class="col-9 bgSubtitles">Join us on our travel around the world, be part of our
+                                family. Visit our facilities in Venice, Italy, and immerse yourself in the
+                                exhibition. </p>
+                        </div>
+                        <img class="venice col-12 mb-3" src="../assets/img/venice.jpg" alt="">
+                        <div class="cajaVideo d-flex flex-column justify-content-center align-items-center col-12 mb-4">
+                            <a href="https://www.instagram.com/skywalkies_/" >
+                                <img src="../assets/img/skywalkiesInstagram.jpeg" alt="" class="sombra my-1">
+                            </a>
+                            <h4 class="bgSubtitles fw-light sombra mt-1">Scan to join us on Instagram</h4>
+                        </div>
+                </div>
+
+
+                <!-- SECCION NEWS  -->
+                <div class="ocultar my-4">
+                    <h2 class="card text-center fw-bolder bgTitlesMobile sombra col-12">News</h2>
+                    <div class="d-flex flex-wrap justify-content-center card mx-3 mb-2">
+                        <p class="m-3">Suscribe to out newsletter to keep in touch with the lastest news from
+                            SKYWALKIES.</p>
+                        <a href="#" class="text-black text-center mb-2">Suscribe</a>
+                    </div>
+
+                    <div class="d-flex mt-5 flex-column align-items-center justify-content-center">
+                        <div class="d-flex my-2 gap-2">
+                            <img src="../assets/img/NIKE-LV-LOW_02.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_01.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_04.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+
+
+                        </div>
+                        <div class="d-flex my-2 gap-2">
+                            <img src="../assets/img/NIKE-LV-LOW_13.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_25.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_12.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+
+                        </div>
+                        <div class="d-flex my-2 gap-2">
+                            <img src="../assets/img/NIKE-LV-LOW_tricolor.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-HIGH_03.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-HIGH_06.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <!-- Full screen modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keybord="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="staticBackdropLabel">Product Preview</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div
+                            class="modal-body d-flex flex-column align-items-center flex-md-row justify-content-around">
+                            <div class="d-flex justify-content-center col-md-6">
+                                <video :src="'../assets/vid/'+renderForModal+'.mp4'" autoplay loop muted
+                                    style="width: 100%;"></video>
+                            </div>
+                            <div class="d-flex flex-column col-10 col-md-5">
+
+                                <h2 class="fw-bolder">
+                                    {{nameFormater(renderForModal)}}</h2>
+                                <h3 class="fw-bold">{{productToDisplay.price}}</h3>
+                                <h5>Stock: {{productToDisplay.stock}}</h5>
+
+
+                                <div class="mt-2 d-flex justify-content-start align-items-center gap-3 ">
+                                    <label for="shoeSize">Select size:</label>
+                                    <select name="shoeSize" id="shoeSize" v-model="shoeSize" required>
+                                        <option value="" selected>--</option>
+                                        <option :value="size" v-for="size in productToDisplaySizes">{{size}}</option>
+                                    </select>
+                                </div>
+                                <div class="mt-1">
+                                    <label for="quantity" class="p-1"> Quantity </label>
+                                    <input type="number" id="quantity" v-model="quantity" class="text-center"
+                                        :value="quantity" style="width: 3rem;" min="1" required>
+                                </div>
+                                <button value="" class="btn btn-dark col-md-6 mt-1" @click="addToCart">Add
+                                    to Cart</button>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer d-flex justify-content-center container">
+
+                            <div class="shoesCarrousel d-flex col-10 col-md-12" id="carruselModal">
+                                <button v-for="product in productsArray" @click="changeRender(product.name)"
+                                    class="mx-2 noBGnoBorder displayedShoe">
+                                    <img :src="'/assets/img/'+product.name+'.png'" style="width: 100px;" alt="">
+                                </button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+
+
+
+
+
+
+
+
+            <!-- DESKTOP DISPLAY -->
+            <!-- EMPIEZA EL SLIDER -->
+
+            <div class='slider d-none d-lg-flex' id="slider">
+                <div class="bloques" id="newCollection">
+                    <div class=" c1 d-flex justify-content-center align-items-center">
+                        <h1 class="text-center fw-bolder bgTitles">Nike Newest Collection</h1>
+                    </div>
+                    <div class=" cVideo d-flex justify-content-center align-items-center">
+                        <video src="../assets/vid/zapatillaRotando.webm" autoplay loop muted></video>
+                    </div>
+                    <div class=" history d-flex justify-content-center align-items-center">
+                        <div class="divs overflow-auto">
+                            <h2 class="text-center">"Air Force 1", by "Sky Walkies</h2>
+                            <p class="m-3">Originally designed by Nike in 1982, the Sky Walkies "Airforce 1" marks the
+                                first
+                                time the shoe has been made outside of a Nike factory. An emblem of the street style
+                                community that sapwned it, Men's Artistic Director Renzo Balbo considered the Nike Air
+                                Force
+                                1 a cultural symbol in its own right. Now two icons join forces to create the mos
+                                authentic
+                                high-end sports shoe. Fasion transcends to become an art object symbol of the subculture
+                                with a bit of magic and innovation.</p>
+                        </div>
+                    </div>
+                    <div class=" dream d-flex flex-column justify-content-end align-items-end">
+                        <h3 class="text-center bgTitles">"DREAM NOW"</h3>
+                    </div>
+                </div>
+
+                <div class="bloques" id="handcrafted">
+                    <div class=" c1 d-flex justify-content-center align-items-center">
+                        <h2 class="text-center fw-bolder bgTitles">Handcrafted</h2>
+                    </div>
+                    <div class=" c2 d-flex justify-content-center align-items-end ">
+                        <p class="m-3 divs p-3">Travel to Fiesso d'Artico and enter the Maison's atelier to discover the
+                            unrivaled craftsmanship the most authentic high-end sports shoe ever.
+                        </p>
+                    </div>
+                    <div class=" c3">
+                        <video autoplay loop muted src="../assets/vid/handcrafted/handcrafted_1.mp4"></video>
+                    </div>
+                    <div class=" c4 d-flex justify-content-center align-items-center">
+                        <img src="../assets/img/handcrafted/handcrafted_2.webp" alt="">
+                    </div>
+                    <div class=" c5 d-flex justify-content-center align-items-center">
+                        <p class="m-3 divs p-2">A true craftsmanship is based on a skillful hand and precision. Patterns
+                            in
+                            luxury
+                            materials are cut, arranged and prepared for construction.
+                        </p>
+                    </div>
+                    <div class=" c6 d-flex justify-content-center align-items-center">
+                        <h3 class="text-center bgTitles">"A PATTERN TAKES SHAPE"</h3>
+                    </div>
+                    <div class=" c7 d-flex justify-content-center align-items-center">
+                        <img src="../assets/img/handcrafted/handcrafted_3.webp" alt="">
+                    </div>
+                </div>
+
+                <div class="bloquesGallery flex-column align-items-center justify-content-around gap-3" id="gallery">
+                    <div class="col-12 d-flex flex-column align-items-center justify-content-center gap-1">
+                        <h2 class="text-center fw-bolder bgTitles">Design Gallery</h2>
+                        <div class="d-flex align-items-center flex-wrap justify-content-around filters p-2">
+                            <div class="col-12 d-flex flex-wrap justify-content-center">
+
+                                <div v-for="color in shoeColors" class="d-flex mx-2">
+                                    <input type="checkbox" @change="changeSelectedColors(color)" :id="color"
+                                        :value="color">
+                                    <label :for="color">{{color}}</label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {{filtering}}
+                    <div class="d-flex align-items-center justify-content-around estanteZapatillas col-10">
+
+
+                        <button class="noBGnoBorder mx-2 displayedShoe" v-for="product in upperShelf"
+                            @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                        </button>
+
+
+                    </div>
+
+
+                    <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-12">
+
+                        <button class="noBGnoBorder mx-2 displayedShoe" v-for="product in middleShelf"
+                            @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                        </button>
+
+                    </div>
+
+
+                    <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-10">
+
+                        <button class="noBGnoBorder mx-2 displayedShoe" v-for="product in bottomShelf"
+                            @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                        </button>
+
+                    </div>
+
+                </div>
+                <div class="bloques" id="inspiration">
+                    <div class=" c1 d-flex justify-content-center align-items-center">
+                        <h2 class="text-center fw-bolder bgTitles">Inspiration</h2>
+                    </div>
+                    <div class=" cajaVideo d-flex justify-content-center align-items-center">
+                        <video src="../assets/vid/zapatillaArmandose.webm" autoplay loop muted></video>
+                    </div>
+                    <div class="boxInspiration d-flex justify-content-start align-items-center">
+                        <p class="fw-light divs text-center p-2">For Spring-Summer 2022/23, Renzo Balbo staged a
+                            collaboration between
+                            Sky Walkies and Nike, creating 47 bespoke "Air Force 1" editions. Each of them was expertly
+                            crafted, fusing the classic codes of the sneaker with the House's own insignials and
+                            materials, such as leather, cocodrile, synthetic leather and PVC among others.</p>
+                    </div>
+                    <div class=" extra d-flex justify-content-end align-items-end ">
+                        <h3 class="text-center bgTitles fs-5">"WHAT IS MYTH AND WHAT IS REALITY?"</h3>
+                    </div>
+                </div>
+
+
+                <div class="bloques" id="exposition">
+                    <div class="d-flex">
+                        <div class="d-flex flex-column justify-content-center align-items-center col-3">
+                            <h2 class="text-center fw-bolder bgTitles sombra">Exposition</h2>
+                            <div class="d-flex justify-content-center">
+                                <p class="col-9 bgSubtitles">Join us on our travel around the world, be part of our
+                                    family. Visit our facilities in Venice, Italy, and immerse yourself in the
+                                    exhibition. </p>
+                            </div>
+                        </div>
+                        <img class="venice col-6 mx-5" src="../assets/img/venice.jpg" alt="">
+                        <div class="cajaVideo d-flex flex-column justify-content-center align-items-center col-3">
+                            <a href="https://www.instagram.com/skywalkies_/" >
+                                <img src="../assets/img/skywalkiesInstagram.jpeg" alt="" class="sombra">
+                            </a>
+                            <h4 class="bgSubtitles fw-light sombra mt-5">Scan to join us on Instagram</h4>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="bloques" id="news">
+                    <div class=" c1 d-flex flex-column justify-content-center align-items-center">
+                        <h2 class="text-center bgTitles">News</h2>
+                    </div>
+                    <div class=" boxNewsletter d-flex justify-content-start align-items-center">
+                        <div class="divs d-flex flex-column align-items-center">
+                            <p class="m-3 text-center fs-3">Suscribe to our newsletter to keep in touch with the lastest
+                                news from SKYWALKIES.</p>
+                            <a href="#" class="text-black text-center mb-2 fs-4">Suscribe</a>
+                        </div>
+                    </div>
+                    <div class=" boxShoes d-flex flex-column align-items-center justify-content-center">
+                        <div class="d-flex my-2 gap-2 estanteZapatillas">
+                            <img src="../assets/img/NIKE-LV-LOW_02.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_01.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_04.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                        </div>
+                        <div class="d-flex my-2 gap-2 estanteZapatillas">
+                            <img src="../assets/img/NIKE-LV-LOW_13.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_25.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_12.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                        </div>
+                        <div class="d-flex my-2 gap-2 estanteZapatillas">
+                            <img src="../assets/img/NIKE-LV-LOW_tricolor.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-HIGH_03.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-HIGH_06.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!-- TERMINA SLIDER -->
+    </main>
+
+
+    <footer class="d-flex align-items-center justify-content-evenly justify-content-lg-start">
+        <!-- FOOTER MOBILE -->
+        <div class="mt-5 d-flex d-lg-none align-items-center justify-content-evenly border-top flex-wrap">
+            <div class="d-flex justify-content-evenly col-12 col-md pt-3">
+                <div class="d-flex flex-column">
+                    <a href="#" class="fs-5 text-black">ABOUT US</a>
+                    <a href="#" class="fs-6 text-black">News</a>
+                </div>
+                <div class="d-flex flex-column">
+                    <a href="#" class="fs-6 text-black">Influence</a>
+                    <a href="#" class="fs-6 text-black">Employment</a>
+                </div>
+            </div>
+
+            <div class="d-flex col-12 col-md justify-content-center mt-lg-3">
+                <a href="#" class="fs-1 mx-4 text-black">
+                    <i class="bi bi-instagram"></i>
+                </a>
+
+                <a href="#" class="fs-1 mx-4 text-black">
+                    <i class="bi bi-facebook"></i>
+                </a>
+
+                <a href="#" class="fs-1 mx-4 text-black">
+                    <i class="bi bi-twitter"></i>
+                </a>
+
+            </div>
+
+            <div class="d-flex flex-column col-12 col-md text-center justify-content-end pt-4">
+                <p>&copy; 2022 SKYWALKIES SRL. All rights reserved</p>
+                <a href="#" class="text-black">Terms and privacy policy</a>
+            </div>
+        </div>
+        <!-- FIN FOOTER MOBILE -->
+
+
+
+        <!-- FOOTER DESKTOP -->
+        <ul class="d-lg-flex justify-content-around align-items-center d-none" id="footerLg">
+            <li class="mt-4">
+                <a href="#newCollection">Nike newest collection</a>
+            </li>
+            <li class="mt-4">
+                <a href="#handcrafted">Handcrafted</a>
+            </li>
+            <li class="mt-4">
+                <a href="#gallery">Gallery</a>
+            </li>
+            <li class="mt-4">
+                <a href="#inspiration">Inspiration</a>
+            </li>
+            <li class="mt-4">
+                <a href="#exposition">Exposition</a>
+            </li>
+            <li class="mt-4">
+                <a href="#news">News</a>
+            </li>
+            <li class="mt-4">Sky Walkies &reg;</li>
+        </ul>
+        <!-- FIN FOOTER DESKTOP -->
+    </footer>
+    </div>
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+    <script src="../assets/js/index.js"></script>
+
+    <script src="../assets/js/sliderVanilla.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal';
+}
+
+header {
+    height: 7vh !important;
+}
+
+main {
+    min-height: 80vh !important;
+}
+
+nav {
+    height: 100%;
+}
+
+footer {
+    height: 13vh;
+    background-color: white !important;
+}
+
+
+/* para la imagen de prueba de logo */
+
+nav>img {
+    height: 75%;
+}
+
+
+
+
+/* Estilos de customizacion */
+label {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    height: 110.38px;
+    padding: .2rem;
+    background-color: white;
+}
+
+h5 {
+    background-color: white;
+    padding: 1rem;
+    text-align: center;
+    border: black solid 1px;
+    font-size: smaller;
+    margin-top: 1rem;
+}
+
+#keepItButton {
+    border: 2px solid black !important;
+    background-color: white;
+    font-weight: 400;
+    width: 7rem;
+    height: 3rem;
+    padding: .5rem;
+    transition: 300ms;
+    border-radius: 5px;
+    justify-self: center !important;
+}
+
+#keepItButton:hover {
+    background-color: black;
+    color: white !important;
+    transform: scale(1.2);
+    text-decoration: underline;
+}
+
+.selectorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: .5rem;
+}
+
+.contenedorCanvas {
+    height: 21rem;
+    width: fit-content;
+    background-color: white;
+}
+
+/* carrusel  */
+
+.carrusel {
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 19rem;
+    height: 9rem;
+
+}
+
+.carrusel>div {
+    margin: 5px;
+    padding: 0;
+    display: inline-block;
+
+}
+
+.carrusel::-webkit-scrollbar {
+    height: 7px !important;
+}
+
+.carrusel::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+}
+
+.carrusel::-webkit-scrollbar-thumb {
+    background-color: black;
+}
+
+/* --- */
+
+.scrollBar::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scrollBar::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+}
+
+.scrollBar::-webkit-scrollbar-thumb {
+    background-color: black;
+}
+
+.avatarPartSelector {
+    background-color: white;
+}
+
+.avatarPartSelector>input {
+    display: none;
+}
+
+.avatarPartSelector:hover {
+    transform: scale(1.05);
+}
+
+
+.alturaSelectYourStyle {
+    height: 55vh;
+}
+
+/* EMPIEZAN LAS MEDIA QUERIES */
+
+
+@media (min-width: 768px) {
+    .carrusel {
+        width: 20rem;
+    }
+
+    .contenedorCanvas {
+        height: 24rem;
+    }
+    h5{
+        font-size: large;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .carrusel {
+        width: 27rem;
+        height: 10rem;
+    }
+
+    label{
+        width: 6rem;
+        height: 8rem;    
+    }
+    header {
+        height: 10vh;
+        position:static;
+    }
+    .contenedorCanvas {
+        height: 38rem;
+    }
+    main {
+        min-height: 87vh !important;
+        width: 100%;
+        background: none !important;
+    }
+
+    .iconosLg {
+        height: 100%;
+        width: 4rem !important;
+    }
+
+    /* ESTO ROMPE UN TOQUE POR EL TEMA DE QUE NO SE VE EL FOOTER Y SI QUEREMOS PROBAR SCROLLEAR PARA VERLO NOS LLEVA CON EL RESTO DE LAS ESTRELLAS */
+    html{
+        overflow:hidden;
+    }
+    h5{
+        font-size: larger;
+    }
+}
